@@ -1,7 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'models.dart';
-import 'dart:math';
 
 class IdeaPage extends StatefulWidget {
   final IdeaType ideatype;
@@ -14,6 +12,7 @@ class IdeaPage extends StatefulWidget {
 
 class _IdeaPageState extends State<IdeaPage> {
   Idea idea;
+  int index = -1;
 
   @override
   initState() {
@@ -24,7 +23,7 @@ class _IdeaPageState extends State<IdeaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(197, 181, 130, 1),
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: Text(widget.ideatype.name),
         leading: IconButton(
@@ -38,7 +37,10 @@ class _IdeaPageState extends State<IdeaPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('assets/images/piano.png'),
+            SizedBox(
+              height: 200,
+              child: Image.asset('assets/images/mpc.png'),
+            ),
             _ideaBuilder(context),
             RaisedButton(
               onPressed: () {
@@ -52,16 +54,17 @@ class _IdeaPageState extends State<IdeaPage> {
     );
   }
 
-  Future getIdea() {
-    final rng = new Random();
-    Firestore.instance
-        .collection('ideatypes')
-        .document(widget.ideatype.reference.documentID)
-        .collection('ideas')
-        .snapshots()
-        .listen((data) {
-      setState(() => this.idea = Idea.fromSnapshot(
-          data.documents[rng.nextInt(data.documents.length)]));
+  void getIdea() {
+    print("getIdea");
+    print(this.index);
+    var newIndex = (this.index + 1) % widget.ideatype.ideas.length;
+    print(newIndex);
+    print(widget.ideatype.ideas.length);
+    var newIdea = widget.ideatype.ideas[newIndex];
+
+    setState(() {
+      this.idea = newIdea;
+      this.index = newIndex;
     });
   }
 
@@ -74,31 +77,9 @@ class _IdeaPageState extends State<IdeaPage> {
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
             child: new Text(
               idea.description.toUpperCase(),
-              style: Theme.of(context).textTheme.display1,
+              style: Theme.of(context).textTheme.display2,
             ),
           ),
         ]);
-  }
-
-  Widget _buildBody(BuildContext context) {
-    final url = widget.ideatype.reference.path + '/ideas/';
-    print('url:$url');
-    return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance
-          .collection(url)
-          //.where("name", isEqualTo: widget.ideatype.name)
-          .snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return CircularProgressIndicator();
-        print("lala");
-        print(snapshot.data.documents.first.data);
-        snapshot.data.documents.map((data) => print(data));
-        print(Idea.fromSnapshot(snapshot.data.documents[2]));
-        setState(
-            () => this.idea = Idea.fromSnapshot(snapshot.data.documents.first));
-        print('over');
-        return _ideaBuilder(context);
-      },
-    );
   }
 }

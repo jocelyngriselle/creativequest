@@ -1,73 +1,130 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'idea_type_page.dart';
 import 'models.dart';
-import 'idea_page.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() {
-    return _HomePageState();
+class HomePage extends StatelessWidget {
+  Future<QuerySnapshot> getData() {
+    return Future<QuerySnapshot>.delayed(
+      Duration(seconds: 2),
+      () => Firestore.instance.collection('fl_content').getDocuments(),
+    );
   }
-}
 
-class _HomePageState extends State<HomePage> {
+  List<IdeaType> getIdeaTypes(List<DocumentSnapshot> data) {
+    print("here");
+    print(data);
+    List<DocumentSnapshot> ideaTypesSnapshots =
+        data.where((i) => i.data["_fl_meta_"]["schema"] == "ideatype").toList();
+    print("ici");
+    print(ideaTypesSnapshots);
+    List<IdeaType> ideaTypes1 = [];
+
+    for (var ideaTypeSnapshot in ideaTypesSnapshots) {
+      print("here57");
+      print(data[0].data);
+      print(data[0].metadata);
+      //print(data[2].data["field_1576669262429"].documentID);
+      print(ideaTypeSnapshot.documentID);
+      List<DocumentSnapshot> ideasSnapshots = data
+          .where((i) =>
+              i.data["_fl_meta_"]["schema"] == "idea" &&
+              i.data["type"].documentID == ideaTypeSnapshot.documentID)
+          .toList();
+
+      var ideaType = IdeaType.fromSnapshot(ideaTypeSnapshot, ideasSnapshots);
+      ideaTypes1.add(ideaType);
+    }
+    /*List<IdeaType> ideaTypes = ideaTypesSnapshots
+        .map((ideatype) => IdeaType.fromSnapshot(ideatype))
+        .toList();
+    print(ideaTypes);
+    print(data[0].data);
+    print(data[0].data["_fl_meta_"]["schema"]);*/
+    //return data;
+    //setState(() => this.idea = Idea.fromSnapshot(
+    // data.documents[rng.nextInt(data.documents.length)],));
+    return ideaTypes1;
+  }
+
   @override
   Widget build(BuildContext context) {
+    var data = getData();
     return Scaffold(
-      backgroundColor: Color.fromRGBO(197, 181, 130, 1),
-      body: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset('assets/images/piano.png'),
-            new Text(
-              "I'm shopping ideas for ...".toUpperCase(),
-              style: Theme.of(context).textTheme.display1,
-            ),
-            _buildBody(context)
-          ]),
-    );
-  }
+      backgroundColor: Theme.of(context).backgroundColor,
+      body: SafeArea(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <
+            Widget>[
+          Text(
+            "Creative Quest".toUpperCase(),
+            style: Theme.of(context).textTheme.display1,
+          ),
+          Text(
+            "Music Production Coach",
+            style: Theme.of(context).textTheme.display2,
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          FutureBuilder<QuerySnapshot>(
+              future: data,
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                List<Widget> children;
+                print("snapshot");
+                print(snapshot);
 
-  Widget _buildBody(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('ideatypes').snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return CircularProgressIndicator();
-        return _buildList(context, snapshot.data.documents);
-      },
-    );
-  }
-
-  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
-    return Column(
-      children: snapshot.map((data) => _buildListItem(context, data)).toList(),
-    );
-  }
-
-  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final ideatype = IdeaType.fromSnapshot(data);
-
-    return Padding(
-      key: ValueKey(ideatype.name),
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-      child: new ButtonTheme(
-        minWidth: 300.0,
-        height: 50.0,
-        child: RaisedButton(
-            shape: RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(100.0),
-                side: BorderSide(color: Colors.red)),
-            textColor: Colors.white,
-            color: Color(0xFFBB4602),
-            child: Text(ideatype.name.toUpperCase(),
-                style: TextStyle(fontSize: 20)),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => IdeaPage(ideatype: ideatype)),
-              );
-            }),
+                if (snapshot.hasData) {
+                  print("hasdata");
+                  print(snapshot.data.documents[0].data["_fl_meta_"]["schema"]);
+                  children = <Widget>[
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => IdeaTypesPage(
+                                  ideaTypes:
+                                      getIdeaTypes(snapshot.data.documents))),
+                        );
+                      },
+                      child: SizedBox(
+                          height: 200,
+                          child: Image.asset('assets/images/piano.jpg')),
+                      /*Icon(
+                            Icons.check_circle_outline,
+                            color: Colors.green,
+                            size: 60,
+                          )*/
+                    )
+                  ];
+                } else {
+                  children = <Widget>[
+                    const Padding(
+                      padding: EdgeInsets.only(top: 16),
+                      child: Text('Loading...'),
+                    ),
+                    SizedBox(
+                      height: 200,
+                      child: Center(
+                        child: SizedBox(
+                          child: CircularProgressIndicator(),
+                          width: 60,
+                          height: 60,
+                        ),
+                      ),
+                    ),
+                  ];
+                }
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: children,
+                  ),
+                );
+              })
+        ]),
       ),
     );
   }
