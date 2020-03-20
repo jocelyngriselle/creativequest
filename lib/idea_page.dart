@@ -150,47 +150,6 @@ class _IdeaPageState extends State<IdeaPage> {
                 ),
               ],
             ),
-//          Column(
-//            children: <Widget>[
-//              Container(
-//                height: maxHeight * 17 / 24,
-//              ),
-//              Container(
-//                height: maxHeight * 5 / 24,
-//                child: Column(
-//                  mainAxisAlignment: MainAxisAlignment.center,
-//                  children: <Widget>[
-//                    RaisedButton(
-//                      shape: RoundedRectangleBorder(
-//                        borderRadius: new BorderRadius.circular(50.0),
-//                      ),
-//                      onPressed: () {
-//                        getIdea();
-//                      },
-//                      child: Text(
-//                        'MORE IDEAS',
-//                        style: Theme.of(context).textTheme.button,
-//                      ),
-//                      textColor: Colors.white,
-//                      color: Theme.of(context).accentColor,
-//                    ),
-//                    FlatButton(
-//                      shape: RoundedRectangleBorder(
-//                        borderRadius: new BorderRadius.circular(50.0),
-//                      ),
-//                      onPressed: () {
-//                        getIdea();
-//                      },
-//                      child: Text('SUBMIT AN IDEA',
-//                          style: Theme.of(context).textTheme.button),
-//                      textColor: Colors.white,
-//                      color: Theme.of(context).cardColor,
-//                    ),
-//                  ],
-//                ),
-//              ),
-//            ],
-//          ),
           ],
         ),
       ),
