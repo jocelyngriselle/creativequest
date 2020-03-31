@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'idea_type_page.dart';
 import 'models.dart';
+import 'dart:math';
 
 class HomePage extends StatelessWidget {
   Future<QuerySnapshot> getData() {
@@ -12,16 +13,12 @@ class HomePage extends StatelessWidget {
   }
 
   List<IdeaType> getIdeaTypes(List<DocumentSnapshot> data) {
-    print("here");
-    print(data);
     List<DocumentSnapshot> ideaTypesSnapshots =
         data.where((i) => i.data["_fl_meta_"]["schema"] == "ideatype").toList();
-    print("ici");
     print(ideaTypesSnapshots);
     List<IdeaType> ideaTypes1 = [];
 
     for (var ideaTypeSnapshot in ideaTypesSnapshots) {
-      print("here57");
       print(data[0].data);
       print(data[0].metadata);
       //print(data[2].data["field_1576669262429"].documentID);
@@ -35,15 +32,6 @@ class HomePage extends StatelessWidget {
       var ideaType = IdeaType.fromSnapshot(ideaTypeSnapshot, ideasSnapshots);
       ideaTypes1.add(ideaType);
     }
-    /*List<IdeaType> ideaTypes = ideaTypesSnapshots
-        .map((ideatype) => IdeaType.fromSnapshot(ideatype))
-        .toList();
-    print(ideaTypes);
-    print(data[0].data);
-    print(data[0].data["_fl_meta_"]["schema"]);*/
-    //return data;
-    //setState(() => this.idea = Idea.fromSnapshot(
-    // data.documents[rng.nextInt(data.documents.length)],));
     return ideaTypes1;
   }
 
@@ -55,14 +43,6 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <
             Widget>[
-          Text(
-            "Creative Quest".toUpperCase(),
-            style: Theme.of(context).textTheme.display1,
-          ),
-          Text(
-            "Music Production Coach",
-            style: Theme.of(context).textTheme.display2,
-          ),
           SizedBox(
             height: 30,
           ),
@@ -73,7 +53,6 @@ class HomePage extends StatelessWidget {
                 List<Widget> children;
                 print("snapshot");
                 print(snapshot);
-
                 if (snapshot.hasData) {
                   print("hasdata");
                   print(snapshot.data.documents[0].data["_fl_meta_"]["schema"]);
@@ -89,8 +68,12 @@ class HomePage extends StatelessWidget {
                         );
                       },
                       child: SizedBox(
-                          height: 200,
-                          child: Image.asset('assets/images/piano.jpg')),
+                          height: min((MediaQuery.of(context).size.height) / 2,
+                              MediaQuery.of(context).size.width * 0.9),
+                          width: min((MediaQuery.of(context).size.height) / 2,
+                              MediaQuery.of(context).size.width * 0.9),
+                          child:
+                              Image.asset('assets/images/tape-recorder.png')),
                       /*Icon(
                             Icons.check_circle_outline,
                             color: Colors.green,
@@ -100,12 +83,9 @@ class HomePage extends StatelessWidget {
                   ];
                 } else {
                   children = <Widget>[
-                    const Padding(
-                      padding: EdgeInsets.only(top: 16),
-                      child: Text('Loading...'),
-                    ),
                     SizedBox(
-                      height: 200,
+                      height: min((MediaQuery.of(context).size.height) / 2,
+                          MediaQuery.of(context).size.width * 0.9),
                       child: Center(
                         child: SizedBox(
                           child: CircularProgressIndicator(),
@@ -123,7 +103,19 @@ class HomePage extends StatelessWidget {
                     children: children,
                   ),
                 );
-              })
+              }),
+          Text(
+            "Creative".toUpperCase(),
+            style: Theme.of(context).textTheme.headline2,
+          ),
+          Text(
+            "Hacks".toUpperCase(),
+            style: Theme.of(context).textTheme.headline3,
+          ),
+          Text(
+            "Music Production Coach",
+            style: Theme.of(context).textTheme.headline1,
+          ),
         ]),
       ),
     );
