@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'models.dart';
+import 'idea.dart';
 import 'dart:math';
+import 'favorite.dart';
 
 class IdeaAnimation extends StatefulWidget {
   final Idea idea;
@@ -14,6 +15,7 @@ class IdeaAnimation extends StatefulWidget {
 
 class IdeaAnimationState extends State<IdeaAnimation>
     with SingleTickerProviderStateMixin {
+  FavoriteRepository _favoritesRepository = FavoriteRepository();
   bool _gestureStatus = true; // are we adding to favorite or passing ?
   Animation<double> rotateAnimation;
   Animation<Offset> slideAnimation;
@@ -62,12 +64,12 @@ class IdeaAnimationState extends State<IdeaAnimation>
         TweenSequenceItem<double>(
           tween: Tween<double>(begin: 0.0, end: 1.0)
               .chain(CurveTween(curve: Curves.easeOutExpo)),
-          weight: 60.0,
+          weight: 10.0,
         ),
         TweenSequenceItem<double>(
           tween: Tween<double>(begin: 1.0, end: 0.0)
               .chain(CurveTween(curve: Curves.ease)),
-          weight: 40.0,
+          weight: 90.0,
         ),
       ],
 
@@ -94,6 +96,8 @@ class IdeaAnimationState extends State<IdeaAnimation>
   }
 
   like() {
+    _favoritesRepository.addFavorite(
+        widget.idea.description, widget.idea.reference);
     widget.onGestureEnd();
     _gestureStatus = true;
     controller.forward();
@@ -106,6 +110,7 @@ class IdeaAnimationState extends State<IdeaAnimation>
   }
 
   reverse() {
+    // TODO if we added to favorites wwe have to remove the last one
     //_gestureStatus = false;
     controller.reverse();
   }
@@ -118,143 +123,60 @@ class IdeaAnimationState extends State<IdeaAnimation>
   @override
   Widget build(BuildContext context) {
     final maxWidth = MediaQuery.of(context).size.width;
-    final maxHeight = MediaQuery.of(context).size.height -
-        76; // 56 = size of the appbar TODO make this dynamic
+    final maxHeight = MediaQuery.of(context)
+        .size
+        .height; // 56 = size of the appbar TODO make this dynamic
 
     return Stack(
       children: <Widget>[
-        Column(
-          children: <Widget>[
-            AnimatedBuilder(
-              animation: controller,
-              builder: (BuildContext context, Widget child) {
-                return Opacity(
-                  opacity: backgroundOpacityAnimation.value,
-                  child: Container(
-                    color: Theme.of(context).backgroundColor,
-                    height: maxHeight * 6 / 24,
-                  ),
-                );
-              },
-            ),
-            Container(
-              //color: Colors.yellow,
-              height: maxHeight * 13 / 24,
-              child: _ideaBuilder(context),
-            ),
-          ],
+        Center(
+          child: Container(
+            height: maxHeight * 18 / 24,
+            child: _ideaBuilder(context),
+          ),
         ),
-        Column(
-          children: <Widget>[
-            Container(
-              //color: Colors.pink,
-              height: maxHeight * 9 / 24,
-              child: AnimatedBuilder(
-                animation: controller,
-                builder: (BuildContext context, Widget child) {
-                  var opacity = (1 - controller.value);
-                  return Opacity(
-                    opacity: opacity,
-                    child: Center(
-                      child: widget.idea.image,
-                    ), // TODO change
-                  );
-//                  return Center(
-//                    child: Opacity(
-//                      opacity: opacity,
-//                      child: widget.idea.image, // TODO change
-//                    ),
-                  //);
-                },
-              ),
-            ),
-          ],
-        ),
-        Column(
-          children: <Widget>[
-            Container(
-              height: maxHeight * 9 / 24,
-              //color: Colors.deepPurple,
-              child: AnimatedBuilder(
-                animation: controller,
-                builder: (BuildContext context, Widget child) {
-                  var opacity = opacityAnimation
-                      .value; //min(opacityAnimation.value * 12, 1);
-                  //opacity = opacity > 0.7 ? 0.0 : opacity;
-                  print("OPACITY");
-                  print(opacityAnimation.value);
-                  print(opacity);
-                  var text = _gestureStatus ? 'LIKE' : 'PASS';
-                  var color = _gestureStatus
-                      ? Colors.green.withOpacity(opacity)
-                      : Colors.red.withOpacity(opacity);
-                  return Center(
-                    child: Transform.rotate(
-                      angle: -pi / 12,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: color,
-                          borderRadius: new BorderRadius.all(
-                            const Radius.circular(16.0),
-                          ),
-                        ),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 8.0, horizontal: 16.0),
-                          child: Text(
-                            text,
-                            style: TextStyle(
-                              fontSize: 48.0,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Grotesk',
-                              color: Colors.white.withOpacity(opacity),
-                            ),
-                          ),
+        Container(
+          height: maxHeight * 9 / 24,
+          child: AnimatedBuilder(
+            animation: controller,
+            builder: (BuildContext context, Widget child) {
+              var opacity =
+                  opacityAnimation.value; //min(opacityAnimation.value * 12, 1);
+              //opacity = opacity > 0.7 ? 0.0 : opacity;
+              var text = _gestureStatus ? 'LIKE' : 'PASS';
+              var color = _gestureStatus
+                  ? Colors.green.withOpacity(opacity)
+                  : Colors.red.withOpacity(opacity);
+              return Center(
+                child: Transform.rotate(
+                  angle: -pi / 12,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: color,
+                      borderRadius: new BorderRadius.all(
+                        const Radius.circular(10.0),
+                      ),
+                    ),
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                      child: Text(
+                        text,
+                        style: TextStyle(
+                          fontSize: 48.0,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Grotesk',
+                          color: Colors.white.withOpacity(opacity),
                         ),
                       ),
                     ),
-                  );
-                },
-              ),
-            ),
-          ],
+                  ),
+                ),
+              );
+            },
+          ),
         ),
       ],
-    );
-  }
-
-  Widget _ideaCard(
-    BuildContext context,
-  ) {
-    if (widget.idea == null) return CircularProgressIndicator();
-    final maxWidth = MediaQuery.of(context).size.width;
-    final maxHeight = MediaQuery.of(context).size.height - 76;
-    return Container(
-      decoration: new BoxDecoration(
-        color: Theme.of(context).accentColor,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            spreadRadius: 1.0, //extend the shadow
-          )
-        ],
-        borderRadius: new BorderRadius.all(
-          const Radius.circular(16.0),
-        ),
-      ),
-      width: maxWidth * 0.8,
-      padding: EdgeInsets.fromLTRB(
-        maxHeight * 1 / 24,
-        maxHeight * 1 / 24,
-        maxHeight * 1 / 24,
-        maxHeight * 1 / 24,
-      ),
-      child: Center(
-        child: Text(
-          widget.idea.description,
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-      ),
     );
   }
 
@@ -297,6 +219,60 @@ class IdeaAnimationState extends State<IdeaAnimation>
                 child: _ideaCard(context)),
           );
         },
+      ),
+    );
+  }
+
+  Widget _ideaCard(BuildContext context) {
+    if (widget.idea == null) return CircularProgressIndicator();
+    final maxWidth = MediaQuery.of(context).size.width;
+    final maxHeight = MediaQuery.of(context).size.height;
+    return Card(
+      color: Theme.of(context).cardColor,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0))),
+      elevation: controller.value > 0 ? 3.0 : 0.0,
+      child: Container(
+        height: maxHeight * 18 / 24,
+        width: maxWidth * 0.9,
+        padding: EdgeInsets.fromLTRB(
+          maxHeight * 1 / 24,
+          maxHeight * 1 / 24,
+          maxHeight * 1 / 24,
+          maxHeight * 1 / 24,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Container(
+              //color: Colors.yellow,
+              height: maxHeight * 6 / 24,
+              child: AnimatedBuilder(
+                animation: controller,
+                builder: (BuildContext context, Widget child) {
+                  var opacity = (1 - controller.value);
+                  return Opacity(
+                    opacity: opacity,
+                    child: Center(
+                      child: widget.idea.imageDecorated,
+                    ),
+                  );
+                },
+              ),
+            ),
+            Container(
+              //color: Colors.blue,
+              height: maxHeight * 9 / 24,
+              child: Center(
+                child: Text(
+                  widget.idea.description,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

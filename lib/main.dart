@@ -1,47 +1,70 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-//import 'package:firebase/firebase.dart';
+import 'login_page.dart';
 
 void main() {
-  /* initializeApp(
-      apiKey: "YourApiKey",
-      authDomain: "YourAuthDomain",
-      databaseURL: "YourDatabaseUrl",
-      projectId: "YourProjectId",
-      storageBucket: "YourStorageBucket");*/
-
   runApp(CreativeQuest());
 }
 
 class CreativeQuest extends StatelessWidget {
+  //final primaryColor = Color.fromRGBO(241, 231, 195, 1);
+  final primaryColor = Color.fromRGBO(50, 58, 84, 1);
+  final accentColor = Color.fromRGBO(237, 122, 64, 1);
+  final backgroundColor = Color.fromRGBO(236, 237, 240, 1.0);
+  final cardColor = Colors.white;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'CreativeQuest',
       theme: ThemeData(
-        primaryColor: Color.fromRGBO(64, 64, 64, 1),
-        accentColor: Color.fromRGBO(64, 64, 64, 1),
-        backgroundColor: Color.fromRGBO(73, 73, 73, 1),
+        primaryColor: primaryColor,
+        accentColor: accentColor,
+        backgroundColor: backgroundColor,
+        cardColor: cardColor,
         fontFamily: 'Grotesk',
         textTheme: TextTheme(
-          display1: TextStyle(
-            fontSize: 42.0,
+          headline1: TextStyle(
+            fontSize: 20.0,
             fontFamily: 'Grotesk',
-            color: Colors.white,
+            color: primaryColor,
             fontWeight: FontWeight.bold,
           ),
-          title: TextStyle(
-              fontSize: 36.0, fontWeight: FontWeight.bold, color: Colors.white),
-          subtitle: TextStyle(
-              fontSize: 36.0, fontWeight: FontWeight.bold, color: Colors.white),
-          body1: TextStyle(
-              fontSize: 14.0, fontFamily: 'Grotesk', color: Colors.white),
-          display2: TextStyle(
-              fontSize: 28.0, fontFamily: 'Grotesk', color: Colors.white),
-          headline: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          headline2: TextStyle(
+              fontSize: 64.0, fontWeight: FontWeight.bold, color: Colors.white),
+          headline3: TextStyle(
+              fontSize: 94.0, fontWeight: FontWeight.bold, color: accentColor),
+          headline4: TextStyle(
+            fontSize: 30.0,
+            fontWeight: FontWeight.bold,
+            color: primaryColor,
+          ),
+          headline5: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            color: primaryColor,
+          ),
+          headline6: TextStyle(
+              fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.white),
+          bodyText1: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Grotesk',
+            color: primaryColor,
+          ),
+          bodyText2: TextStyle(
+            fontSize: 20.0,
+            fontFamily: 'Grotesk',
+            color: accentColor,
+          ),
+          button: TextStyle(
+            fontSize: 14.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
       ),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }
