@@ -1,4 +1,5 @@
 import 'package:creativequest/idea_submit.dart';
+import 'package:creativequest/routes.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'action.dart';
@@ -20,9 +21,7 @@ class _IdeaPageState extends State<IdeaPage> {
   int currentIndex;
   final IdeaRepository repository = IdeaRepository();
 
-  @override
-  initState() {
-    super.initState();
+  initIdeas() {
     repository.getIdeas(widget.action).then((snapshot) {
       setState(() {
         this.ideas = snapshot;
@@ -35,12 +34,15 @@ class _IdeaPageState extends State<IdeaPage> {
   }
 
   @override
+  initState() {
+    super.initState();
+    initIdeas();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final maxWidth = MediaQuery.of(context).size.width;
-    final maxHeight = MediaQuery.of(context)
-        .size
-        .height; // 56 = size of the appbar TODO make this dynamic
-
+    final maxHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: PreferredSize(
@@ -58,8 +60,8 @@ class _IdeaPageState extends State<IdeaPage> {
                 child: Ink(
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: new BorderRadius.all(
-                      const Radius.circular(10.0),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10.0),
                     ),
                   ),
                   child: IconButton(
@@ -175,12 +177,8 @@ class _IdeaPageState extends State<IdeaPage> {
                           heroTag: "Add",
                           mini: true,
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      SubmitIdeaPage(action: widget.action)),
-                            );
+                            Navigator.pushNamed(context, submitRoute,
+                                arguments: widget.action);
                           },
                           child: Icon(
                             Icons.add,
@@ -201,14 +199,12 @@ class _IdeaPageState extends State<IdeaPage> {
   }
 
   void next() {
-    print("FUNCTION NEXT");
     setState(() {
       currentIndex--;
     });
   }
 
   void back() {
-    print("FUNCTION LAST");
     setState(() {
       currentIndex++;
     });
@@ -253,11 +249,14 @@ class _IdeaPageState extends State<IdeaPage> {
       return SizedBox(
         height: min((MediaQuery.of(context).size.height) / 2,
             MediaQuery.of(context).size.width * 0.9),
-        child: Center(
-          child: SizedBox(
-            child: CircularProgressIndicator(),
-            width: 60,
-            height: 60,
+        child: Container(
+          color: Theme.of(context).backgroundColor,
+          child: Center(
+            child: SizedBox(
+              child: CircularProgressIndicator(),
+              width: 60,
+              height: 60,
+            ),
           ),
         ),
       );

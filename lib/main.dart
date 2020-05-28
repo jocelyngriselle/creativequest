@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'login_page.dart';
+import 'routes.dart';
 
 void main() {
   runApp(CreativeQuest());
 }
 
-class CreativeQuest extends StatelessWidget {
-  //final primaryColor = Color.fromRGBO(241, 231, 195, 1);
-  final primaryColor = Color.fromRGBO(50, 58, 84, 1);
-  final accentColor = Color.fromRGBO(237, 122, 64, 1);
-  final backgroundColor = Color.fromRGBO(236, 237, 240, 1.0);
-  final cardColor = Colors.white;
+final primaryColor = Color.fromRGBO(50, 58, 84, 1);
+final accentColor = Color.fromRGBO(237, 122, 64, 1);
+final backgroundColor = Color.fromRGBO(236, 237, 240, 1.0);
+final cardColor = Colors.white;
 
+class CreativeQuest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,7 +63,7 @@ class CreativeQuest extends StatelessWidget {
           ),
         ),
       ),
-      home: LoginPage(),
+      onGenerateRoute: Router.generateRoute,
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'favorite.dart';
-import 'utils.dart';
+import 'routes.dart';
 
 class FavoritesPage extends StatefulWidget {
   final List<Action> ideaTypes;
@@ -17,23 +17,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
   FavoriteRepository _repository = FavoriteRepository();
   List<Favorite> favorites;
 
-  @override
-  void initState() {
-    super.initState();
-    //_favorites = _repository.get();
-  }
-
-//  Future<void> _removeFromFavorites(Idea idea) async {
-//    _favorites.removeOne(idea);
-////    setState(() {
-////      _favorites = _favorites.removeOne(idea);
-////    });
-//  }
-
   void deleteFavorite(index, context) async {
     await _repository.removeFavorite(favorites[index]);
-//    Scaffold.of(context).showSnackBar(SnackBar(
-//        backgroundColor: Colors.green, content: Text("Favorite removed")));
   }
 
   void deleteFavorites(context) async {
@@ -161,9 +146,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
             future: _repository.getFavorites(),
             builder: (context, snapshot) {
               final maxWidth = MediaQuery.of(context).size.width;
-              if (snapshot.hasData == false) {
+              if (!snapshot.hasData) {
                 print('NODATA');
-                return CircularProgressIndicator();
+                return Center(child: CircularProgressIndicator());
               }
               print("DATA77");
               print(snapshot.data);
@@ -273,7 +258,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                                             future: favorites[index].getImage(),
                                             builder: (context, snapshot) {
                                               if (!snapshot.hasData) {
-                                                return CircularProgressIndicator();
+                                                return Container();
                                               }
                                               return snapshot.data;
                                             },

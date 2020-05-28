@@ -3,7 +3,7 @@ import 'action.dart';
 import 'idea.dart';
 import 'favorite.dart';
 import 'auth.dart';
-import 'login_page.dart';
+import 'routes.dart';
 
 class SubmitIdeaPage extends StatefulWidget {
   final CreativeAction action;
@@ -18,24 +18,8 @@ class _SubmitIdeaPageState extends State<SubmitIdeaPage> {
   final _formKey = GlobalKey<FormState>();
   final textController = TextEditingController();
   final textFocusNode = FocusNode();
-  final _auth = Auth();
   IdeaRepository _ideaRepository = IdeaRepository();
   FavoriteRepository _favoriteRepository = FavoriteRepository();
-
-  @override
-  void initState() {
-    super.initState();
-    _auth.getCurrentUser().then((user) {
-      if (user == null) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => LoginPage(),
-          ),
-        );
-      }
-    });
-  }
 
   @override
   void dispose() {
@@ -52,9 +36,7 @@ class _SubmitIdeaPageState extends State<SubmitIdeaPage> {
   @override
   Widget build(BuildContext context) {
     final maxWidth = MediaQuery.of(context).size.width;
-    final maxHeight = MediaQuery.of(context).size.height -
-        76; // 56 = size of the appbar TODO make this dynamic
-    print(maxHeight);
+    final maxHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
@@ -74,8 +56,8 @@ class _SubmitIdeaPageState extends State<SubmitIdeaPage> {
                   child: Ink(
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: new BorderRadius.all(
-                        const Radius.circular(10.0),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
                       ),
                     ),
                     child: IconButton(

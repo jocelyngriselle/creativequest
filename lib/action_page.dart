@@ -1,12 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:creativequest/favorites_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'action.dart';
 import 'idea_page.dart';
-import 'login_page.dart';
-import 'utils.dart';
 import 'idea_submit.dart';
+import 'routes.dart';
 
 class ActionsPage extends StatefulWidget {
   @override
@@ -21,7 +19,6 @@ class _ActionsPageState extends State<ActionsPage> {
 
   @override
   void initState() {
-    print("INIT");
     super.initState();
     repository.getActions().then((actions) {
       print(actions);
@@ -65,11 +62,9 @@ class _ActionsPageState extends State<ActionsPage> {
                 color: Theme.of(context).primaryColor,
               ),
               onPressed: () {
-                Navigator.push(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => SettingsUserPage(),
-                  ),
+                  accountRoute,
                 );
               },
             ),
@@ -149,29 +144,30 @@ class _ActionsPageState extends State<ActionsPage> {
             height: maxHeight / 4,
             buttonColor: Colors.green,
             child: FlatButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Center(
-                  child: Text(
-                    action.name.toUpperCase(),
-                    style: Theme.of(context).textTheme.headline4.copyWith(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Center(
+                child: Text(
+                  action.name.toUpperCase(),
+                  style: Theme.of(context).textTheme.headline4.copyWith(
 //                            color: index % 2 == 0
 //                                ? Theme.of(context).primaryColor
 //                                : Colors.white
-                        color: Theme.of(context).cardColor),
-                  ),
+                      color: Theme.of(context).cardColor),
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: action.name.toLowerCase() == "submit an idea"
-                          ? (context) => SubmitIdeaPage(action: action)
-                          : (context) => IdeaPage(action: action),
-                    ),
-                  );
-                }),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: action.name.toLowerCase() == "submit an idea"
+                        ? (context) => SubmitIdeaPage(action: action)
+                        : (context) => IdeaPage(action: action),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),
