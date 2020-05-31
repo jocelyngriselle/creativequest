@@ -20,12 +20,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    print("IN LOGIN PAGE");
-    /*_auth.getCurrentUser().then((user) {
-      if (user != null) {
-        Navigator.pushReplacementNamed(context, actionRoute);
-      }
-    });*/
   }
 
   void onGoogleSignIn(BuildContext context) async {
@@ -59,34 +53,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
-      appBar: AppBar(
-        brightness: Brightness.light,
-        automaticallyImplyLeading: false,
-        backgroundColor: Theme.of(context).cardColor,
-        iconTheme: IconThemeData(color: Colors.black),
-        elevation: 0,
-        title: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              flex: 1,
-              child: Container(),
-            ),
-            Flexible(
-              flex: 4,
-              child: Center(
-                child:
-                    Text("LOGIN", style: Theme.of(context).textTheme.headline5),
-              ),
-            ),
-            Flexible(
-              child: Container(),
-              flex: 1,
-            )
-          ],
-        ),
-      ),
       body: FutureBuilder(
         future: _auth.getCurrentUser(),
         builder: (context, snapshot) {
@@ -103,37 +69,51 @@ class _LoginPageState extends State<LoginPage> {
                 : Container(
                     padding: EdgeInsets.all(50),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
-                          "We use signin to save your favorites, nothing else",
-                          style: Theme.of(context).textTheme.bodyText1,
+                        Image.asset(
+                            'assets/images/tape-recorder-decorated.png'),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            GoogleSignInButton(
+                              onPressed: () {
+                                onGoogleSignIn(context);
+                              },
+                            ),
+                            AppleSignInButton(
+                              onPressed: () {
+                                //onGoogleSignIn(context);
+                              },
+                            ),
+                            FacebookSignInButton(
+                              onPressed: () {
+                                //onGoogleSignIn(context);
+                              },
+                            ),
+                            RaisedButton(
+                              onPressed: () {
+                                onAnonymousSignIn(context);
+                              },
+                              color: Colors.white,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "Signin Anonymously",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .button
+                                        .copyWith(
+                                            color:
+                                                Theme.of(context).primaryColor),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
                         ),
-                        GoogleSignInButton(
-                          onPressed: () {
-                            onGoogleSignIn(context);
-                          },
-                        ),
-                        AppleSignInButton(
-                          onPressed: () {
-                            //onGoogleSignIn(context);
-                          },
-                        ),
-                        FacebookSignInButton(
-                          onPressed: () {
-                            //onGoogleSignIn(context);
-                          },
-                        ),
-                        RaisedButton(
-                          onPressed: () {
-                            onAnonymousSignIn(context);
-                          },
-                          color: Colors.white,
-                          child: Row(
-                            children: [Text("Signin Anonymously")],
-                          ),
-                        )
                       ],
                     ),
                   );

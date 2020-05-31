@@ -1,0 +1,518 @@
+[
+  {
+    "description": "Limit Yourself to 5 Instruments.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "You are not starting a track. You are just playing around for 20 minutes. Store the result somewhere and then start something else.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start from a bpm of 100.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by distorting an existing sound or sample.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Pick a painting you like. Keep that painting on a screen while you compose. Try and relate the feeling you get from the painting in music.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Write a melodic hook in 5 minutes. It doesn’t have to be good, just write it. Repeat 4 times. Start a project from the best one.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by writing the cheesiest / most obvious melody that comes to mind. Use it as a base for a new track. When you've added a few more elements, remove it.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by writing a polyrhythmic pattern, 2 sounds playing two distinctive rhythms that complement each other.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Think about a movie that moved you deeply. Start a track that reconnects you with the feeling of that movie.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by taking a 5mn walk in your neighbourhood. Find a track name from what you have seen in those 5mn and start working.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Today you are not trying to make a good track. You are just making a track. Allow yourself to produce an average sounding track.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by using a time signature you have never or rarely used before.\n",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Use a song you like as a template. Put it in your daw and use the template's bpm and song structure as a starting point.\n",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Use your phone or any portable recorder to record a sound or an atmosphere from your surrounding or from the street. Use this recording as the starting point of the song.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by gathering 10 sounds in a folder. Make a track with those 10 sounds only.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by building an instrument from scratch or by tweaking an existing one to create an unusual sound texture.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Today you are not writing a track. Today you are only spending time doing sound design. Either creating synth patches or sorting through and organizing samples. Set a time target and do it.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Make a loop from a song you like. Play / improvise over the top of it for 5mn. Remove the loop and use any interesting bits from what you have recorded to start a new project.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by writing a track structure before writing the actual parts.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Download a midi file of a song from the internet. Use a melody line or chord structure from the song. Tweak until unrecognizable and start your song from there.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Pick a situation or a subject that really annoys you. Write a protest track to that situation or subject.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Think of a music genre that you secretly love and is clearly untrendy. Start by writing in that genre.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by arbitrarily mixing two very different music aesthetics.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Pick a track from an album that has been trending in the last couple of months and use it as a model.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Write a track to express a feeling that was felt by a friend or a fictional character.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Don’t make a full track. Just play around for 20 minutes and don’t worry whether it’s good or not. Do it three times in a row.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by writing the kind of music you were into when you were 15 years old.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by going through the unfinished tracks on your hard drive. Pick one and revisiit it.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start from a fully formed drum loop of an unfamiliar style. You are allowed to remove the loop only when you have added a few elements to it.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Take a book, a movie or a personal story as a starting point. The goal of the track you are writing is to tell this story.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by writing the most 'cliched' part a producer / songwriter could write in your favorite genre. Forget your ego.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by changing the normal tuning of an instrument.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Record a part, don’t worry about making mistakes. Pick one of the mistakes as the central part for a new track.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by streaming your music production process on social media for 30 minutes.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Pick one of your favourite artists. Imagine you are writing this track to submit it to him / her.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by singing a beat and writing it on your daw.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": " Start by finding a riff on your favourite instrument.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by replicating an element from a known song of rnb.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by replicating a bassline from a known artist whose name starts with a C.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by sampling a vocals loop from youtube. Use a country name as a search term. Don’t get lost clicking on all the youtube suggestions!",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by picking a keys loop in your library.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Grab a short cut of a movie and write a soundtrack for it.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by using a chord progression from a song you like and change the chord order.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by applying an unknown technique learnt from a short tutorial.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by creating a physical instrument from scratch. For example, build a craft percussion, or use an acoustic instrument in a twisted way.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start a track in another daw than your usual one. Using a different tool can help change perspective",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Download the manual of a virtual synth you own and study one feature to come up with an idea.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start with a bpm that is 30 units faster or slower that your most comfortable speed. For example if your favourite bpm is 140, try doing something at 110.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by picking one sample and making as many sounds from it as possible. For example, try and make drums sounds and textures out of the same sample.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by designing a new synth patch.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by borrowing a musical technique from a less-familiar genre online tutorial. For example if you are a hip-hop producer, go learn a techno-music producing technique.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": " Start with a drum kit made of 3 sounds only.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Start by importing a recording made on your phone.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Think of an important moment in your life from 5 to 10 years ago. Write a soundtrack for it.",
+    "action": "LdniQ2lRnCrlUU3bKW8A"
+  },
+  {
+    "description": "Pick a track and automate 5 parameters on it.",
+    "action": "SEMyf857N8oCApWpTUqL"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "If you have the set up for it, stand up while producing for the next hour"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Write a transition between 2 sections that seem to fit well into each other"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Try and invert the sections you wrote"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Identify what sounds too good in the track - make it weirder"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Work for 5 minutes very quickly. Repeat 3 times"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Use your own vocals as a texture"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Send a demo of the current state of song to a musician / producer friend. Ask him / her what he / she would do."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Incorporate some real-life noise from your direct surroundings into the track."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Make sure you have a song structure before getting into the details. Don’t lose the big picture."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Think like an engineer. Write down a list of what is left to be done in the track. Break down the problem into small chunks and apply."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Pause and take 10 minutes to study the history of one genre associated with the track you are making. Don’t get stuck in the youtube hole though. Use a timer."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Emphasize what's obvious and cliched in your track."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Add an element from a music genre that you secretly love and is clearly untrendy."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Leave a loop of the song to play in the backround and go take a shower"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Sample an element of the music you have written so far. Cut it and replay it in a surprising way."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Don’t be afraid of repetition."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Convert a melodic element into a rhythmic element."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Be extravagant. Overdo what you would normally do."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Shut the door and listen from outside."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Find the bits of the track that hurt the most and emphasize how bad they sound."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Work extremely fast for 10 minutes."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Read a part of a boring book in silence for 10 minutes."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Find the most embarrassing details of your current track and amplify them."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Work for 15 minutes with half of the tracks muted."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Identify an element that is a detail of least importance. Give it more visibility, change the layering logic."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Reverse one of the elements of the track."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Remove notes from either the bassline or any other melodic line."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Humanize the parts that are quantized / programmed too precisely."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Use filters."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Add an unacceptable chord progression in the track."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Do nothing for as long as possible."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Play the song as loud as possible, stand up and listen to your body."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Tidy up"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Make a sudden, destructive unpredictable action; incorporate it."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Emphasize the contrats between the different constituting elements of your track."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Change instrument roles ex : make the melody the bassline etc…"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Take away the 3 first elements in order of apparent non-importance."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Emphasize repetitions."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Ask someone who isn’t a musician to suggest a melody line."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Do something that is really easy, obvious or cliched."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Stop the music. Close your eyes. Take 15 deep breathes."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Go work for an hour from a different location to your usual music writing space. Go to a café, go outdoors, work from public transport..."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Duplicate a particular drum loop 10 times and try and derive 10 variations of that particular loop."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Duplicate a loop and create a new version changing some aspect of it (sound design, harmony, melody, rhythmic pattern...). Duplicate the modified loop, modify it again and repeat the whole process 5 times."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Record an existing chord or note through an unusual reverb, sample it using the tail only and use it in your composition."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Record a part by using your punch instead or single fingers on a controller. Result will sound better if you use a midi plug-in to limit the possible notes to a certain scale."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Convert ALL midi tracks into audio. Make decision, commit and move forward."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Work on a different version of a MIDI part by applying MIDI transposition, note inversion, reverse or time shifting. Try to superimpose that new part on the original."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Pick a random syllable and use it as a search argument in your sample library to find some new samples and presets."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Double one of the instruments and change the texture to add a new layer."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Create ‘odd’ loops by duplicating a loop, removing some notes and setting it to a different loop length."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Slice an ambient texture audio clip at random locations, apply a different effect to each slice."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Copy a drum MIDI pattern and paste it on a synth MIDI track."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Write a tonality change : same pattern repeats one half tone up the scale."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Layer a melody line with different textures or instruments. Create more sound color variations by balancing dynamically those layers."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Write 3 alternate voicings for the chord progression."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Write 3 alternate versions of the chord progression adding or removing notes to the chords."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Get out of the studio, spend 30mn recording random sounds on your phone then try and use them in your project."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Try and use a synth or percussion sound that you would be ashamed to use."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Work 30mn with earplugs"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Write a part using noise / something that isn’t an instrument."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Imagine you are your closest friend. Try and write an element as if you were that person."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Change the BPM drastically"
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Use children’s voices as a sample."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Focus on one tiny element of the song for the next 30mn."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Listen in total darkness."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Don't be afraid of things because they're easy to do."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Don't be frightened of clichés."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Take the pressure off yourself and aim for good enough. Accept good enough enough times and soon it'll develop into something great."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Tune the drums to the song."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Apply subtle automation to a synth’s envelope to give a pattern more life."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Remove as many elements as possible - stick to the bare bones."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Insert unique events to break some repetitions."
+  },
+  {
+    "action": "SEMyf857N8oCApWpTUqL",
+    "description": "Your job is not to create perfection. It is to abandon your work when you’ve done all you can currently do. Forget your ego."
+  }
+]

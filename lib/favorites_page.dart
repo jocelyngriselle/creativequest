@@ -147,15 +147,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
             builder: (context, snapshot) {
               final maxWidth = MediaQuery.of(context).size.width;
               if (!snapshot.hasData) {
-                print('NODATA');
                 return Center(child: CircularProgressIndicator());
               }
-              print("DATA77");
-              print(snapshot.data);
-              print(snapshot.data.documents);
-              print(snapshot.data.documents
-                  .map((document) => Favorite.fromSnapshot(document))
-                  .toList());
               favorites = new List<Favorite>.from(snapshot.data.documents
                   .map((document) => Favorite.fromSnapshot(document))).toList();
               return ListView.builder(
@@ -163,7 +156,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
 //                separatorBuilder: (BuildContext context, int index) =>
 //                    Divider(),
                 itemBuilder: (BuildContext context, int index) {
-                  print("I'M HERE");
                   return Container(
                     //width: maxWidth * 0.8,
 //                    padding: EdgeInsets.all(18),

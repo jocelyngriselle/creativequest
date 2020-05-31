@@ -32,12 +32,12 @@ class IdeaAnimationState extends State<IdeaAnimation>
         duration: const Duration(milliseconds: 750),
         reverseDuration: const Duration(milliseconds: 500),
         vsync: this);
-    controller.addStatusListener((status) {
-      //if (status == AnimationStatus.completed) {
-      //getIdea();
-      //controller.reset();
-      //}
-    });
+    //controller.addStatusListener((status) {
+    //if (status == AnimationStatus.completed) {
+    //getIdea();
+    //controller.reset();
+    //}
+    //});
 
     rotateAnimation = CurvedAnimation(
       parent: controller,
@@ -210,13 +210,16 @@ class IdeaAnimationState extends State<IdeaAnimation>
       child: AnimatedBuilder(
         animation: controller,
         builder: (BuildContext context, Widget child) {
-          return SlideTransition(
-            position: _gestureStatus ? slideAnimation : slideAnimationNok,
-            child: Transform.rotate(
-                angle: _gestureStatus
-                    ? rotateAnimation.value * 0.2 * pi
-                    : -rotateAnimation.value * 0.2 * pi,
-                child: _ideaCard(context)),
+          return Opacity(
+            opacity: backgroundOpacityAnimation.value,
+            child: SlideTransition(
+              position: _gestureStatus ? slideAnimation : slideAnimationNok,
+              child: Transform.rotate(
+                  angle: _gestureStatus
+                      ? rotateAnimation.value * 0.2 * pi
+                      : -rotateAnimation.value * 0.2 * pi,
+                  child: _ideaCard(context)),
+            ),
           );
         },
       ),

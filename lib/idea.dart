@@ -36,6 +36,46 @@ class Idea {
   String toString() => "Idea<description:$_description>";
 }
 
+//class UserIdea {
+//  final DocumentReference reference;
+//  final DocumentReference idea;
+//  final String userUid;
+//
+//  UserIdea.fromMap(Map<String, dynamic> map, {this.reference})
+//      : assert(map['idea'] != null),
+//        assert(map['idea'] != userUid),
+//        userUid = map['userUid'],
+//        idea = map['idea'];
+//
+//  UserIdea.fromSnapshot(DocumentSnapshot snapshot)
+//      : this.fromMap(snapshot.data, reference: snapshot.reference);
+//
+//  @override
+//  String toString() => "Idea<description:$idea>";
+//}
+
+//class UserIdeaRepository {
+//  final CollectionReference collection =
+//      Firestore.instance.collection('userIdeas');
+//
+//  Future<List<Idea>> getIdeas(CreativeAction action) async {
+//    final user = await Auth().getCurrentUser();
+//    QuerySnapshot qShot = await collection
+//        .where('action', isEqualTo: action.reference)
+//        .getDocuments();
+//
+//    List<Idea> temp =
+//        qShot.documents.map((data) => Idea.fromSnapshot(data)).toList();
+//
+//    return temp
+//        .where((element) =>
+//            element.isValidated ||
+//            element.userUid == null ||
+//            element.userUid == user.uid)
+//        .toList();
+//  }
+//}
+
 class IdeaRepository {
   final CollectionReference collection = Firestore.instance.collection('ideas');
 
@@ -51,7 +91,7 @@ class IdeaRepository {
 
     List<Idea> temp =
         qShot.documents.map((data) => Idea.fromSnapshot(data)).toList();
-    print(temp);
+    temp.shuffle();
     return temp
         .where((element) =>
             element.isValidated ||

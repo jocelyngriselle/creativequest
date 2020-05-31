@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'action.dart';
 import 'idea.dart';
 import 'favorite.dart';
-import 'auth.dart';
-import 'routes.dart';
+
+import 'package:keyboard_visibility/keyboard_visibility.dart';
 
 class SubmitIdeaPage extends StatefulWidget {
   final CreativeAction action;
@@ -20,6 +20,26 @@ class _SubmitIdeaPageState extends State<SubmitIdeaPage> {
   final textFocusNode = FocusNode();
   IdeaRepository _ideaRepository = IdeaRepository();
   FavoriteRepository _favoriteRepository = FavoriteRepository();
+  double maxHeight;
+  bool showImage = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    KeyboardVisibilityNotification().addNewListener(
+      onChange: (bool visible) {
+        // Add state updating code
+        setState(() {
+          showImage = visible ? false : true;
+        });
+      },
+    );
+    super.didChangeDependencies();
+  }
 
   @override
   void dispose() {
@@ -36,8 +56,9 @@ class _SubmitIdeaPageState extends State<SubmitIdeaPage> {
   @override
   Widget build(BuildContext context) {
     final maxWidth = MediaQuery.of(context).size.width;
-    final maxHeight = MediaQuery.of(context).size.height;
-
+    maxHeight = showImage
+        ? MediaQuery.of(context).size.height
+        : MediaQuery.of(context).size.height / 2;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: PreferredSize(
@@ -95,10 +116,12 @@ class _SubmitIdeaPageState extends State<SubmitIdeaPage> {
                 Column(
                   children: <Widget>[
                     Container(
-                      height: maxHeight * 6 / 24,
+                      height:
+                          showImage ? maxHeight * 6 / 24 : maxHeight * 1 / 24,
                     ),
                     Container(
-                      height: maxHeight * 13 / 24,
+                      height:
+                          showImage ? maxHeight * 13 / 24 : maxHeight * 18 / 24,
                       child: Container(
                         decoration: new BoxDecoration(
                           color: Theme.of(context).accentColor,
@@ -113,55 +136,60 @@ class _SubmitIdeaPageState extends State<SubmitIdeaPage> {
                           maxHeight * 1 / 24,
                           maxHeight * 1 / 24,
                         ),
-                        child: TextFormField(
-                          focusNode: textFocusNode,
-                          controller: textController,
-                          autofocus: true,
-                          textInputAction: TextInputAction.done,
-                          keyboardType: TextInputType.multiline,
-                          maxLines: 10,
-                          cursorColor: Colors.white,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText1
-                              .copyWith(color: Theme.of(context).cardColor),
-                          decoration: InputDecoration(
-                            labelText: '',
-                            border: InputBorder.none,
+                        child: SingleChildScrollView(
+                          child: TextFormField(
+                            focusNode: textFocusNode,
+                            controller: textController,
+                            autofocus: true,
+                            textInputAction: TextInputAction.done,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: 10,
+                            cursorColor: Colors.white,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1
+                                .copyWith(color: Theme.of(context).cardColor),
+                            decoration: InputDecoration(
+                              labelText: '',
+                              border: InputBorder.none,
+                            ),
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                Scaffold.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Please enter some text'),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                                return '';
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              Scaffold.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('Please enter some text'),
-                                  backgroundColor: Colors.red,
-                                ),
-                              );
-                              return '';
-                            }
-                            return null;
-                          },
                         ),
                       ),
                     ),
                   ],
                 ),
+                showImage
+                    ? Column(
+                        children: <Widget>[
+                          Container(
+                            height: maxHeight * 7 / 24,
+                            child: Center(
+                                child: Image.asset(
+                              "assets/images/speakers.png",
+                              fit: BoxFit.fitHeight,
+                            )),
+                          ),
+                        ],
+                      )
+                    : Container(),
                 Column(
                   children: <Widget>[
                     Container(
-                      height: maxHeight * 7 / 24,
-                      child: Center(
-                          child: Image.asset(
-                        "assets/images/speakers.png",
-                        fit: BoxFit.fitHeight,
-                      )),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Container(
-                      height: maxHeight * 18 / 24,
+                      height:
+                          showImage ? maxHeight * 18 / 24 : maxHeight * 17 / 24,
                     ),
                     Container(
                       child: Row(
