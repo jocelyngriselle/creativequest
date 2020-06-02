@@ -107,7 +107,7 @@ class IdeaRepository {
       'description': text,
       'imageSlug': "speakers",
       'action': action.reference,
-      'validated': false,
+      'isValidated': false,
       'userUid': user == null ? 'anonymous' : user.uid,
     });
     return idea;
