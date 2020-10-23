@@ -12,7 +12,7 @@ class AccountPage extends StatefulWidget {
 
 class _AccountPageState extends State<AccountPage> {
   final Auth _auth = Auth();
-  FirebaseUser _user;
+  User _user;
 
   @override
   void initState() {

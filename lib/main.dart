@@ -1,14 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'routes.dart';
 
 void main() {
-  runApp(CreativeQuest());
+  runApp(App());
 }
 
 final primaryColor = Color.fromRGBO(50, 58, 84, 1);
 final accentColor = Color.fromRGBO(237, 122, 64, 1);
 final backgroundColor = Color.fromRGBO(236, 237, 240, 1.0);
 final cardColor = Colors.white;
+
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      // Initialize FlutterFire
+      future: Firebase.initializeApp(),
+      builder: (context, snapshot) {
+        // Check for errors
+        if (snapshot.hasError) {
+          print(snapshot.error);
+          return Center(
+            child: SizedBox(
+              child: CircularProgressIndicator(backgroundColor: Colors.red,),
+              width: 60,
+              height: 60,
+            ),
+          );
+        }
+
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          return CreativeQuest();
+        }
+
+        // Otherwise, show something whilst waiting for initialization to complete
+        return Center(
+          child: SizedBox(
+            child: CircularProgressIndicator(),
+            width: 60,
+            height: 60,
+          ),
+        );
+      },
+    );
+  }
+}
+
+
+
 
 class CreativeQuest extends StatelessWidget {
   @override
@@ -63,7 +105,7 @@ class CreativeQuest extends StatelessWidget {
           ),
         ),
       ),
-      onGenerateRoute: Router.generateRoute,
+      onGenerateRoute: CreativeRouter.generateRoute,
     );
   }
 }

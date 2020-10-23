@@ -30,7 +30,7 @@ class Idea {
         _imageSlug = map['imageSlug'];
 
   Idea.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data, reference: snapshot.reference);
+      : this.fromMap(snapshot.data(), reference: snapshot.reference);
 
   @override
   String toString() => "Idea<description:$_description>";

@@ -18,7 +18,7 @@ class Favorite {
         idea = map['idea'];
 
   Favorite.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data, reference: snapshot.reference);
+      : this.fromMap(snapshot.data(), reference: snapshot.reference);
 
   Future<Idea> getIdea() async {
     return Idea.fromSnapshot(await idea.get());
@@ -33,10 +33,10 @@ class Favorite {
 class FavoriteRepository {
   final Auth _auth = Auth();
   final CollectionReference collection =
-      Firestore.instance.collection('favorites');
+      FirebaseFirestore.instance.collection('favorites');
 
   void addFavorite(String description, [DocumentReference idea]) async {
-    FirebaseUser _user = await _auth.getCurrentUser();
+    User _user = await _auth.getCurrentUser();
     collection.add({
       'description': description,
       'idea': idea == null ? '' : idea,
@@ -45,27 +45,27 @@ class FavoriteRepository {
   }
 
   Future<void> removeFavorite(Favorite favorite) async {
-    return collection.document(favorite.reference.documentID).delete();
+    return collection.doc(favorite.reference.id).delete();
   }
 
   Future<QuerySnapshot> getFavorites() async {
     print("getFavorites");
-    FirebaseUser _user = await _auth.getCurrentUser();
+    User _user = await _auth.getCurrentUser();
     if (_user == null) {
       return null;
     }
-    return collection.where('userUid', isEqualTo: _user.uid).getDocuments();
+    return collection.where('userUid', isEqualTo: _user.uid).get();
   }
 
   Future<void> removeFavorites() async {
-    FirebaseUser _user = await _auth.getCurrentUser();
+    User _user = await _auth.getCurrentUser();
     if (_user == null) {
       return null;
     }
     return collection
         .where('userUid', isEqualTo: _user.uid)
-        .getDocuments()
-        .then((snapshot) => snapshot.documents
+        .get()
+        .then((snapshot) => snapshot.docs
             .forEach((document) => document.reference.delete()));
   }
 }

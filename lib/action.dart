@@ -12,7 +12,7 @@ class CreativeAction {
         _imageSlug = map['imageSlug'];
 
   CreativeAction.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data, reference: snapshot.reference);
+      : this.fromMap(snapshot.data(), reference: snapshot.reference);
 
   Image get image => Image.asset(
         "assets/images/$_imageSlug.png",

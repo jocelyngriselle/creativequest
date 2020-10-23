@@ -13,7 +13,7 @@ const String ideaRoute = '/ideas';
 const String submitRoute = '/submit';
 const String favoriteRoute = '/favorites';
 
-class Router {
+class CreativeRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case loginRoute:
