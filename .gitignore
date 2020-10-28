@@ -18,6 +18,10 @@
 # Visual Studio Code related
 .vscode/
 
+# Firebase
+android/app/google-services.json
+GoogleService-Info.plist
+
 # Flutter/Dart/Pub related
 **/doc/api/
 .dart_tool/
